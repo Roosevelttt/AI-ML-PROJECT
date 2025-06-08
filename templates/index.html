@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}AI/ML Code Classifier - Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Left Panel - Code Input -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-code me-2"></i>
+                    Python Code Input
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- File Upload -->
+                <div class="mb-3">
+                    <label for="fileInput" class="form-label">
+                        <i class="fas fa-upload me-1"></i>
+                        Upload Python File (Optional)
+                    </label>
+                    <input type="file" class="form-control" id="fileInput" accept=".py,.txt">
+                    <div class="form-text">Supported formats: .py, .txt (Max 1MB)</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="codeInput" class="form-label">
+                        <i class="fas fa-edit me-1"></i>
+                        Or Paste Your Code Here
+                    </label>
+                    <textarea id="codeInput" class="form-control" rows="15" 
+                              placeholder="# Paste your Python code here...
+# Example:
+def hello_world():
+    print('Hello, World!')
+    return 'Hello from Python!'
+
+if __name__ == '__main__':
+    result = hello_world()
+    print(f'Result: {result}')"></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-success" id="classifyBtn">
+                        <i class="fas fa-brain me-1"></i>
+                        Classify Code
+                    </button>
+                    <button type="button" class="btn btn-info" id="executeBtn">
+                        <i class="fas fa-play me-1"></i>
+                        Execute Code
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="clearBtn">
+                        <i class="fas fa-trash me-1"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Results -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Analysis Results
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Classification Results -->
+                <div id="classificationResults" class="mb-4" style="display: none;">
+                    <h6 class="text-primary">
+                        <i class="fas fa-robot me-1"></i>
+                        Classification Results
+                    </h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h4 id="predictionResult" class="mb-1">-</h4>
+                                    <small class="text-muted">Prediction</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h4 id="confidenceResult" class="mb-1">-</h4>
+                                    <small class="text-muted">Confidence</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Features Analysis -->
+                    <div class="mt-3">
+                        <h6 class="text-secondary">Code Features</h6>
+                        <div id="featuresAnalysis">
+                            <!-- Features will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Execution Results -->
+                <div id="executionResults" class="mb-4" style="display: none;">
+                    <h6 class="text-info">
+                        <i class="fas fa-terminal me-1"></i>
+                        Execution Results
+                    </h6>
+                    
+                    <!-- Output -->
+                    <div class="mb-2">
+                        <label class="form-label text-success">
+                            <i class="fas fa-check-circle me-1"></i>
+                            Output:
+                        </label>
+                        <pre id="executionOutput" class="bg-light p-2 rounded" style="max-height: 200px; overflow-y: auto;"></pre>
+                    </div>
+                    
+                    <!-- Errors -->
+                    <div class="mb-2">
+                        <label class="form-label text-danger">
+                            <i class="fas fa-exclamation-triangle me-1"></i>
+                            Errors:
+                        </label>
+                        <pre id="executionError" class="bg-light p-2 rounded text-danger" style="max-height: 200px; overflow-y: auto;"></pre>
+                    </div>
+                    
+                    <!-- Return Code -->
+                    <div class="mb-2">
+                        <small class="text-muted">
+                            Return Code: <span id="returnCode" class="badge bg-secondary">-</span>
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="text-center" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2 text-muted">Processing your code...</p>
+                </div>
+
+                <!-- Welcome Message -->
+                <div id="welcomeMessage" class="text-center text-muted">
+                    <i class="fas fa-arrow-left fa-2x mb-3"></i>
+                    <h5>Welcome to AI/ML Code Classifier!</h5>
+                    <p>Upload a Python file or paste your code in the editor, then click "Classify Code" to analyze whether it's AI-generated or human-written.</p>
+                    <p>You can also execute the code safely to see its output.</p>
+                    
+                    <div class="mt-4">
+                        <h6 class="text-primary">Features:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-brain text-success me-2"></i>AI vs Human Code Classification</li>
+                            <li><i class="fas fa-play text-info me-2"></i>Safe Code Execution</li>
+                            <li><i class="fas fa-upload text-warning me-2"></i>File Upload Support</li>
+                            <li><i class="fas fa-chart-line text-primary me-2"></i>Code Analysis & Features</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project Information -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    About This Project
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="text-primary">🎯 Project Goal</h6>
+                        <p class="small">Create a supervised machine learning system that can classify Python code as either AI-generated or human-written, with a web interface for easy interaction.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-success">🛠️ Technology Stack</h6>
+                        <ul class="small list-unstyled">
+                            <li><i class="fas fa-check text-success me-1"></i>Flask (Python Web Framework)</li>
+                            <li><i class="fas fa-check text-success me-1"></i>scikit-learn (Machine Learning)</li>
+                            <li><i class="fas fa-check text-success me-1"></i>Bootstrap (Frontend)</li>
+                            <li><i class="fas fa-check text-success me-1"></i>CodeMirror (Code Editor)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-warning">📚 Learning Objectives</h6>
+                        <ul class="small list-unstyled">
+                            <li><i class="fas fa-graduation-cap text-warning me-1"></i>Supervised Machine Learning</li>
+                            <li><i class="fas fa-graduation-cap text-warning me-1"></i>Text Classification (NLP)</li>
+                            <li><i class="fas fa-graduation-cap text-warning me-1"></i>Web Application Development</li>
+                            <li><i class="fas fa-graduation-cap text-warning me-1"></i>Data Processing & Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Initialize CodeMirror when document is ready
+$(document).ready(function() {
+    // Initialize code editor
+    window.codeEditor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
+        mode: 'python',
+        theme: 'monokai',
+        lineNumbers: true,
+        indentUnit: 4,
+        lineWrapping: true,
+        autoCloseBrackets: true,
+        matchBrackets: true
+    });
+    
+    // Set initial size
+    window.codeEditor.setSize(null, 400);
+});
+</script>
+{% endblock %}
