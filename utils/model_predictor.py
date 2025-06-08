@@ -1,5 +1,5 @@
 """
-Model Prediction Module for AI/ML Code Classifier
+Model Prediction Module for Python Code Classifier
 
 This module handles loading trained models and making predictions on new code samples.
 """

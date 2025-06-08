@@ -1,5 +1,5 @@
 """
-Model Evaluation Script for AI/ML Code Classifier
+Model Evaluation Script for Python Code Classifier
 
 This script evaluates the trained model's performance on various code samples
 and generates a comprehensive evaluation report.
@@ -14,7 +14,7 @@ import time
 def test_classification_api():
     """Test the classification API with various code samples."""
     
-    print("🧪 Testing AI/ML Code Classifier API")
+    print("🧪 Testing Python Code Classifier API")
     print("=" * 50)
     
     # Test samples with known labels

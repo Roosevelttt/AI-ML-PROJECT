@@ -1,5 +1,5 @@
 """
-Configuration settings for the AI/ML Code Classifier project.
+Configuration settings for the Python Code Classifier project.
 """
 import os
 from pathlib import Path
@@ -35,7 +35,7 @@ class Config:
     
     # Code execution settings
     CODE_TIMEOUT = 10  # seconds
-    MAX_OUTPUT_LENGTH = 1000  # characters
+    MAX_OUTPUT_LENGTH = 5000  # characters
     
     # Upload settings
     MAX_FILE_SIZE = 1024 * 1024  # 1MB

@@ -1,5 +1,5 @@
 """
-Feature Extraction Module for AI/ML Code Classifier
+Feature Extraction Module for Python Code Classifier
 
 This module extracts various features from Python code that can help distinguish
 between AI-generated and human-written code.

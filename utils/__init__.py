@@ -1,1 +1,1 @@
-# Utils package for AI/ML Code Classifier
+# Utils package for Python Code Classifier

@@ -1,7 +1,7 @@
 """
-AI/ML Code Classifier - Main Flask Application
+Python Code Classifier - Main Flask Application
 
-This is the main entry point for the AI/ML Code Classifier web application.
+This is the main entry point for the Python Code Classifier web application.
 It provides a web interface for classifying Python code as AI-generated or human-written.
 """
 
@@ -160,9 +160,9 @@ def create_app(config_name='default'):
                 # Limit output length
                 max_length = app.config['MAX_OUTPUT_LENGTH']
                 if len(output) > max_length:
-                    output = output[:max_length] + "\\n... (output truncated)"
+                    output = output[:max_length] + "\n... (output truncated)"
                 if len(error) > max_length:
-                    error = error[:max_length] + "\\n... (error truncated)"
+                    error = error[:max_length] + "\n... (error truncated)"
                 
                 return jsonify({
                     'success': True,
@@ -280,7 +280,7 @@ def create_app(config_name='default'):
 app = create_app()
 
 if __name__ == '__main__':
-    print("🚀 Starting AI/ML Code Classifier...")
+    print("🚀 Starting Python Code Classifier...")
     print("📊 Features available:")
 
     # Check model status

@@ -1,5 +1,5 @@
 /**
- * AI/ML Code Classifier - Frontend JavaScript
+ * Python Code Classifier - Frontend JavaScript
  * Handles user interactions and API communication
  */
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
  * Initialize the application
  */
 function initializeApp() {
-    console.log('🚀 AI/ML Code Classifier initialized');
+    console.log('🚀 Python Code Classifier initialized');
     
     // Hide results panels initially
     hideAllResults();
@@ -68,9 +68,8 @@ function handleFileUpload(event) {
     }
     
     // Validate file type
-    const allowedTypes = ['text/plain', 'text/x-python', 'application/x-python-code'];
     const fileName = file.name.toLowerCase();
-    
+
     if (!fileName.endsWith('.py') && !fileName.endsWith('.txt')) {
         showAlert('Please select a .py or .txt file', 'error');
         return;
@@ -254,7 +253,7 @@ function displayClassificationResults(response) {
     if (response.probabilities) {
         const probHtml = `
         <div class="mt-3">
-            <h6 class="text-secondary">Prediction Probabilities</h6>
+            <h6 class="text-gray">Prediction Probabilities</h6>
             <div class="progress mb-2">
                 <div class="progress-bar bg-success" style="width: ${(response.probabilities['human-written'] * 100).toFixed(1)}%">
                     Human: ${(response.probabilities['human-written'] * 100).toFixed(1)}%
@@ -322,17 +321,19 @@ function displayFeatures(features) {
  * Display execution results
  */
 function displayExecutionResults(response) {
-    // Update output
-    $('#executionOutput').text(response.output || '(no output)');
-    
-    // Update errors
-    $('#executionError').text(response.error || '(no errors)');
-    
+    // Update output - preserve newlines and whitespace
+    const output = response.output || '(no output)';
+    $('#executionOutput').text(output);
+
+    // Update errors - preserve newlines and whitespace
+    const error = response.error || '(no errors)';
+    $('#executionError').text(error);
+
     // Update return code
     const returnCode = response.return_code;
     const badgeClass = returnCode === 0 ? 'bg-success' : 'bg-danger';
     $('#returnCode').text(returnCode).removeClass().addClass(`badge ${badgeClass}`);
-    
+
     // Show results panel
     $('#executionResults').show().addClass('fade-in');
 }

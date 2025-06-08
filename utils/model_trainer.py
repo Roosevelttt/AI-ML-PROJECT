@@ -1,5 +1,5 @@
 """
-Model Training Module for AI/ML Code Classifier
+Model Training Module for Python Code Classifier
 
 This module handles the training, evaluation, and optimization of machine learning
 models for classifying Python code as AI-generated or human-written.
@@ -336,7 +336,7 @@ class CodeClassifierTrainer:
         report_path = self.model_dir / 'evaluation_report.txt'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write("AI/ML Code Classifier - Model Evaluation Report\n")
+            f.write("Python Code Classifier - Model Evaluation Report\n")
             f.write("=" * 60 + "\n\n")
             
             # Overall summary

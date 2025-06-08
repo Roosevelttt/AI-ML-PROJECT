@@ -1,5 +1,5 @@
 """
-Data Visualization Script for AI/ML Code Classifier
+Data Visualization Script for Python Code Classifier
 
 This script creates visualizations to help understand the dataset characteristics
 and feature distributions between AI-generated and human-written code.

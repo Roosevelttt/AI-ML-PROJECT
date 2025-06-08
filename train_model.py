@@ -1,5 +1,5 @@
 """
-Model Training Script for AI/ML Code Classifier
+Model Training Script for Python Code Classifier
 
 This script trains machine learning models to classify Python code as
 AI-generated or human-written using the prepared dataset.
@@ -17,13 +17,13 @@ from config import Config
 
 def main():
     """Main function to run model training."""
-    parser = argparse.ArgumentParser(description='Train AI/ML Code Classifier models')
+    parser = argparse.ArgumentParser(description='Train Python Code Classifier models')
     parser.add_argument('--verbose', '-v', action='store_true', help='Enable verbose output')
     parser.add_argument('--quick', '-q', action='store_true', help='Quick training with fewer models')
     
     args = parser.parse_args()
     
-    print("🚀 Starting AI/ML Code Classifier Model Training")
+    print("🚀 Starting Python Code Classifier Model Training")
     print("=" * 60)
     
     try:

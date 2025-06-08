@@ -1,5 +1,5 @@
 """
-Data Collection Module for AI/ML Code Classifier
+Data Collection Module for Python Code Classifier
 
 This module handles the collection and generation of training data for the code classifier.
 It creates both AI-generated and human-written Python code samples.

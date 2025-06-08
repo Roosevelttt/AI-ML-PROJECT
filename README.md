@@ -1,4 +1,4 @@
-# AI/ML Code Classifier
+# Python Code Classifier
 
 A supervised machine learning system that classifies Python code as either AI-generated or human-written, with a web interface for easy interaction.
 

@@ -1,5 +1,5 @@
 """
-Model Testing Script for AI/ML Code Classifier
+Model Testing Script for Python Code Classifier
 
 This script tests the trained model with sample code to verify it's working correctly.
 """

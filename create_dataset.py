@@ -1,5 +1,5 @@
 """
-Dataset Creation Script for AI/ML Code Classifier
+Dataset Creation Script for Python Code Classifier
 
 This script creates the training dataset by collecting code samples,
 extracting features, and preparing the data for machine learning.
@@ -124,7 +124,7 @@ def generate_dataset_report(df: pd.DataFrame, feature_columns: list, data_dir: P
     report_path = data_dir / 'dataset_report.txt'
     
     with open(report_path, 'w', encoding='utf-8') as f:
-        f.write("AI/ML Code Classifier - Dataset Report\n")
+        f.write("Python Code Classifier - Dataset Report\n")
         f.write("=" * 50 + "\n\n")
         
         # Basic statistics
@@ -205,7 +205,7 @@ def generate_dataset_report(df: pd.DataFrame, feature_columns: list, data_dir: P
 
 def main():
     """Main function to run dataset creation."""
-    parser = argparse.ArgumentParser(description='Create training dataset for AI/ML Code Classifier')
+    parser = argparse.ArgumentParser(description='Create training dataset for Python Code Classifier')
     parser.add_argument('--verbose', '-v', action='store_true', help='Enable verbose output')
     
     args = parser.parse_args()

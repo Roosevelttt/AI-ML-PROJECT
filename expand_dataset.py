@@ -1,5 +1,5 @@
 """
-Dataset Expansion Script for AI/ML Code Classifier
+Dataset Expansion Script for Python Code Classifier
 
 This script adds more code samples to increase the dataset size for better training.
 It includes more diverse examples of both human-written and AI-generated code.

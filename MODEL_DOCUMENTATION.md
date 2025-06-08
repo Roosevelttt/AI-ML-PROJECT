@@ -1,8 +1,8 @@
-# AI/ML Code Classifier - Model Documentation
+# Python Code Classifier - Model Documentation
 
 ## 🎯 Overview
 
-This document provides comprehensive information about the machine learning models developed for the AI/ML Code Classifier project. The system successfully distinguishes between AI-generated and human-written Python code with excellent accuracy.
+This document provides comprehensive information about the machine learning models developed for the Python Code Classifier project. The system successfully distinguishes between AI-generated and human-written Python code with excellent accuracy.
 
 ## 📊 Model Performance Summary
 
@@ -206,4 +206,4 @@ curl -X POST http://localhost:5000/classify \
 
 ## 📝 Conclusion
 
-The AI/ML Code Classifier successfully achieves its goal of distinguishing between AI-generated and human-written Python code. With perfect accuracy on test samples and robust feature engineering, the model provides reliable classification with high confidence scores. The system is production-ready and integrated into a user-friendly web application.
+The Python Code Classifier successfully achieves its goal of distinguishing between AI-generated and human-written Python code. With perfect accuracy on test samples and robust feature engineering, the model provides reliable classification with high confidence scores. The system is production-ready and integrated into a user-friendly web application.
