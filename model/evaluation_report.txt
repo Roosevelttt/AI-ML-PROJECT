@@ -1,0 +1,38 @@
+AI/ML Code Classifier - Model Evaluation Report
+============================================================
+
+📊 EVALUATION SUMMARY
+------------------------------
+Test samples: 5
+Features used: 46
+Models trained: 5
+Best model: Logistic Regression
+
+🏆 MODEL COMPARISON
+------------------------------
+Model                Accuracy   Precision  Recall     F1-Score  
+----------------------------------------------------------------------
+Random Forest        0.600      0.600      0.600      0.600     
+Gradient Boosting    0.600      0.600      0.600      0.600     
+Logistic Regression  0.800      0.867      0.800      0.800     
+Support Vector Machine 0.600      0.600      0.600      0.600     
+Naive Bayes          0.800      0.867      0.800      0.800     
+
+🔍 DETAILED RESULTS - Logistic Regression
+------------------------------
+Classification Report:
+              precision    recall  f1-score   support
+
+       Human       1.00      0.67      0.80         3
+          AI       0.67      1.00      0.80         2
+
+    accuracy                           0.80         5
+   macro avg       0.83      0.83      0.80         5
+weighted avg       0.87      0.80      0.80         5
+
+Confusion Matrix:
+                Predicted
+Actual    Human  AI
+Human     2      1     
+AI        0      2     
+

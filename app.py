@@ -17,6 +17,10 @@ from pathlib import Path
 # Import configuration
 from config import config
 
+# Import ML components
+sys.path.append(str(Path(__file__).parent))
+from utils.model_predictor import CodeClassifierPredictor
+
 # Create Flask application
 def create_app(config_name='default'):
     """Create and configure the Flask application."""
@@ -31,6 +35,15 @@ def create_app(config_name='default'):
     # Ensure required directories exist
     os.makedirs(app.config['DATA_DIR'], exist_ok=True)
     os.makedirs(app.config['MODEL_DIR'], exist_ok=True)
+
+    # Initialize ML predictor
+    try:
+        app.predictor = CodeClassifierPredictor(app.config['MODEL_DIR'])
+        print("✅ ML model loaded successfully")
+    except Exception as e:
+        print(f"⚠️  Warning: Could not load ML model: {e}")
+        print("   Classification will use placeholder responses")
+        app.predictor = None
     
     # Routes
     @app.route('/')
@@ -44,15 +57,55 @@ def create_app(config_name='default'):
         try:
             # Get code from form
             code = request.form.get('code', '').strip()
-            
+
             if not code:
                 return jsonify({
                     'error': 'No code provided',
                     'success': False
                 }), 400
-            
-            # For now, return a placeholder response
-            # TODO: Implement actual ML classification
+
+            # Use ML model if available
+            if app.predictor:
+                try:
+                    # Get detailed analysis
+                    analysis = app.predictor.analyze_code_features(code)
+
+                    if 'error' in analysis:
+                        raise Exception(analysis['error'])
+
+                    prediction_result = analysis['prediction']
+                    features = analysis['feature_analysis']
+
+                    # Prepare response
+                    result = {
+                        'success': True,
+                        'prediction': prediction_result['prediction_text'],
+                        'confidence': prediction_result['confidence'],
+                        'probabilities': prediction_result['probabilities'],
+                        'model_name': prediction_result['model_name'],
+                        'features': {
+                            'lines_of_code': features['basic']['total_lines'],
+                            'character_count': features['basic']['total_characters'],
+                            'num_functions': features['syntactic']['num_functions'],
+                            'num_classes': features['syntactic']['num_classes'],
+                            'num_docstrings': features['documentation']['num_docstrings'],
+                            'type_hints_count': features['documentation']['type_hints_count'],
+                            'cyclomatic_complexity': features['syntactic']['cyclomatic_complexity'],
+                            'token_diversity': features['complexity']['token_diversity'],
+                            'has_main_guard': features['documentation']['has_main_guard'],
+                            'complexity_score': 'high' if features['syntactic']['cyclomatic_complexity'] > 5 else 'medium' if features['syntactic']['cyclomatic_complexity'] > 2 else 'low'
+                        },
+                        'message': 'Classification completed successfully using trained ML model'
+                    }
+
+                    return jsonify(result)
+
+                except Exception as ml_error:
+                    print(f"ML prediction error: {ml_error}")
+                    # Fall back to placeholder
+                    pass
+
+            # Fallback placeholder response
             result = {
                 'success': True,
                 'prediction': 'human-written',  # Placeholder
@@ -62,11 +115,11 @@ def create_app(config_name='default'):
                     'character_count': len(code),
                     'complexity_score': 'medium'  # Placeholder
                 },
-                'message': 'Classification completed successfully (placeholder result)'
+                'message': 'Classification completed using placeholder (ML model not available)'
             }
-            
+
             return jsonify(result)
-            
+
         except Exception as e:
             return jsonify({
                 'error': f'Classification failed: {str(e)}',
@@ -187,14 +240,24 @@ def create_app(config_name='default'):
     @app.route('/health')
     def health_check():
         """Health check endpoint."""
+        model_status = 'available' if app.predictor else 'unavailable'
+        model_info = {}
+
+        if app.predictor:
+            try:
+                model_info = app.predictor.get_model_info()
+            except:
+                model_status = 'error'
+
         return jsonify({
             'status': 'healthy',
             'version': '1.0.0',
             'features': {
-                'classification': 'available',
+                'classification': model_status,
                 'execution': 'available',
                 'upload': 'available'
-            }
+            },
+            'model_info': model_info
         })
     
     @app.errorhandler(404)
@@ -219,10 +282,22 @@ app = create_app()
 if __name__ == '__main__':
     print("🚀 Starting AI/ML Code Classifier...")
     print("📊 Features available:")
-    print("   ✅ Code Classification (placeholder)")
+
+    # Check model status
+    model_status = "✅ Code Classification (ML Model)" if app.predictor else "⚠️  Code Classification (Placeholder - No ML Model)"
+    print(f"   {model_status}")
     print("   ✅ Code Execution")
     print("   ✅ File Upload")
     print("   ✅ Web Interface")
+
+    if app.predictor:
+        try:
+            model_info = app.predictor.get_model_info()
+            print(f"   🤖 Model: {model_info.get('model_name', 'Unknown')}")
+            print(f"   📊 Features: {model_info.get('feature_count', 0)}")
+        except:
+            pass
+
     print()
     print("🌐 Access the application at: http://localhost:5000")
     print("📖 API endpoints:")
@@ -231,7 +306,7 @@ if __name__ == '__main__':
     print("   POST /upload - Upload file")
     print("   GET /health - Health check")
     print()
-    
+
     app.run(
         host='0.0.0.0',
         port=5000,

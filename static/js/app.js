@@ -230,18 +230,45 @@ function displayClassificationResults(response) {
     const prediction = response.prediction;
     const predictionClass = prediction === 'human-written' ? 'prediction-human' : 'prediction-ai';
     $('#predictionResult').text(prediction.toUpperCase()).removeClass().addClass(predictionClass);
-    
+
     // Update confidence
     const confidence = Math.round(response.confidence * 100);
     let confidenceClass = 'confidence-low';
     if (confidence >= 80) confidenceClass = 'confidence-high';
     else if (confidence >= 60) confidenceClass = 'confidence-medium';
-    
+
     $('#confidenceResult').text(`${confidence}%`).removeClass().addClass(confidenceClass);
-    
+
     // Update features
     displayFeatures(response.features);
-    
+
+    // Add model information if available
+    if (response.model_name) {
+        const modelInfo = `<div class="alert alert-info mt-2">
+            <small><i class="fas fa-robot me-1"></i>Classified using: ${response.model_name}</small>
+        </div>`;
+        $('#featuresAnalysis').append(modelInfo);
+    }
+
+    // Add probabilities if available
+    if (response.probabilities) {
+        const probHtml = `
+        <div class="mt-3">
+            <h6 class="text-secondary">Prediction Probabilities</h6>
+            <div class="progress mb-2">
+                <div class="progress-bar bg-success" style="width: ${(response.probabilities['human-written'] * 100).toFixed(1)}%">
+                    Human: ${(response.probabilities['human-written'] * 100).toFixed(1)}%
+                </div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-danger" style="width: ${(response.probabilities['ai-generated'] * 100).toFixed(1)}%">
+                    AI: ${(response.probabilities['ai-generated'] * 100).toFixed(1)}%
+                </div>
+            </div>
+        </div>`;
+        $('#featuresAnalysis').append(probHtml);
+    }
+
     // Show results panel
     $('#classificationResults').show().addClass('fade-in');
 }
@@ -251,17 +278,43 @@ function displayClassificationResults(response) {
  */
 function displayFeatures(features) {
     const featuresHtml = `
-        <div class="feature-item">
-            <strong>Lines of Code:</strong> ${features.lines_of_code}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <strong>Lines of Code:</strong> ${features.lines_of_code || 0}
+                </div>
+                <div class="feature-item">
+                    <strong>Character Count:</strong> ${features.character_count || 0}
+                </div>
+                <div class="feature-item">
+                    <strong>Functions:</strong> ${features.num_functions || 0}
+                </div>
+                <div class="feature-item">
+                    <strong>Classes:</strong> ${features.num_classes || 0}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <strong>Docstrings:</strong> ${features.num_docstrings || 0}
+                </div>
+                <div class="feature-item">
+                    <strong>Type Hints:</strong> ${features.type_hints_count || 0}
+                </div>
+                <div class="feature-item">
+                    <strong>Complexity:</strong> ${features.complexity_score || 'unknown'}
+                </div>
+                <div class="feature-item">
+                    <strong>Main Guard:</strong> ${features.has_main_guard ? 'Yes' : 'No'}
+                </div>
+            </div>
         </div>
-        <div class="feature-item">
-            <strong>Character Count:</strong> ${features.character_count}
+        ${features.token_diversity ? `
+        <div class="feature-item mt-2">
+            <strong>Token Diversity:</strong> ${(features.token_diversity * 100).toFixed(1)}%
         </div>
-        <div class="feature-item">
-            <strong>Complexity:</strong> ${features.complexity_score}
-        </div>
+        ` : ''}
     `;
-    
+
     $('#featuresAnalysis').html(featuresHtml);
 }
 
