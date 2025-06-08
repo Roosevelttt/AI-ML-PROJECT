@@ -10,6 +10,10 @@ numpy==1.24.3
 # Text Processing
 textstat==0.7.3
 
+# Data Visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+
 # Utilities
 requests==2.31.0
 python-dotenv==1.0.0

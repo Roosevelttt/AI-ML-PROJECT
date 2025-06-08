@@ -1,0 +1,588 @@
+total_characters,total_lines,non_empty_lines,avg_line_length,max_line_length,empty_line_ratio,whitespace_ratio,syntax_error,num_functions,num_classes,num_imports,num_variables,num_if_statements,num_for_loops,num_while_loops,num_try_except,max_nesting_depth,num_return_statements,num_print_statements,single_quote_count,double_quote_count,quote_preference,tab_indented_lines,space_indented_lines,indentation_preference,snake_case_count,camel_case_count,naming_preference,comment_lines,comment_ratio,flesch_reading_ease,flesch_kincaid_grade,automated_readability_index,coleman_liau_index,gunning_fog,cyclomatic_complexity,unique_tokens,total_tokens,token_diversity,num_docstrings,total_docstring_length,avg_docstring_length,type_hints_count,return_annotations_count,has_main_guard,documentation_ratio,label,label_text,category,complexity,code
+783,32,25,23.5,56,0.21875,0.3154533844189016,False,2,0,0,6,3,1,0,0,4,1,1,0,20,double,0,27,spaces,61,0,snake_case,0,0.0,51.85,8.8,22.3,21.32,6.22,5,46,76,0.6052631578947368,2,203,101.5,9,0,True,0.34375,1,ai-generated,data_processing,medium,"def process_data(data_list):
+    """"""
+    Process a list of data items.
+    
+    Args:
+        data_list (list): List of data items to process
+        
+    Returns:
+        list: Processed data items
+    """"""
+    processed_items = []
+    
+    for item in data_list:
+        if isinstance(item, (int, float)):
+            processed_item = item * 2
+        elif isinstance(item, str):
+            processed_item = item.upper()
+        else:
+            processed_item = str(item)
+        
+        processed_items.append(processed_item)
+    
+    return processed_items
+
+def main():
+    """"""Main execution function.""""""
+    sample_data = [1, 2.5, ""hello"", True, None, ""world""]
+    result = process_data(sample_data)
+    print(""Processed data:"", result)
+
+if __name__ == ""__main__"":
+    main()"
+384,21,16,17.333333333333332,35,0.23809523809523808,0.328125,False,5,1,0,2,1,0,0,0,3,3,1,0,0,double,0,15,spaces,46,0,snake_case,0,0.0,58.65,6.1,21.2,16.66,1.72,1,21,52,0.40384615384615385,0,0,0.0,7,0,False,0.3333333333333333,0,human-written,data_structures,medium,"class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item):
+        self.items.append(item)
+    
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+    
+    def is_empty(self):
+        return len(self.items) == 0
+    
+    def size(self):
+        return len(self.items)
+
+s = Stack()
+s.push(1)
+s.push(2)
+print(s.pop())"
+384,15,12,24.666666666666668,54,0.2,0.2864583333333333,False,1,0,0,5,1,0,0,0,2,2,1,0,0,double,0,9,spaces,51,0,snake_case,2,0.13333333333333333,33.59,22.0,29.4,7.79,22.34,7,25,62,0.4032258064516129,0,0,0.0,2,0,False,0.13333333333333333,0,human-written,algorithm,medium,"# Quick sort implementation
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    
+    return quicksort(left) + middle + quicksort(right)
+
+# Test
+test_array = [3, 6, 8, 10, 1, 2, 1]
+print(quicksort(test_array))"
+1728,61,50,27.34426229508197,95,0.180327868852459,0.386574074074074,False,4,1,0,3,2,0,0,0,3,5,0,0,30,double,0,60,spaces,128,0,snake_case,0,0.0,50.12,9.4,17.7,17.44,6.66,4,50,165,0.303030303030303,5,1034,206.8,25,3,False,0.5409836065573771,1,ai-generated,class,high,"class BankAccount:
+    """"""
+    A class to represent a bank account.
+    
+    Attributes:
+        account_number (str): The account number
+        balance (float): The current balance
+        account_holder (str): The name of the account holder
+    """"""
+    
+    def __init__(self, account_number: str, account_holder: str, initial_balance: float = 0.0):
+        """"""
+        Initialize a new bank account.
+        
+        Args:
+            account_number (str): The account number
+            account_holder (str): The name of the account holder
+            initial_balance (float): The initial balance (default: 0.0)
+        """"""
+        self.account_number = account_number
+        self.account_holder = account_holder
+        self.balance = initial_balance
+    
+    def deposit(self, amount: float) -> bool:
+        """"""
+        Deposit money into the account.
+        
+        Args:
+            amount (float): The amount to deposit
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """"""
+        if amount > 0:
+            self.balance += amount
+            return True
+        return False
+    
+    def withdraw(self, amount: float) -> bool:
+        """"""
+        Withdraw money from the account.
+        
+        Args:
+            amount (float): The amount to withdraw
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """"""
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            return True
+        return False
+    
+    def get_balance(self) -> float:
+        """"""
+        Get the current balance.
+        
+        Returns:
+            float: The current balance
+        """"""
+        return self.balance"
+624,21,20,28.761904761904763,65,0.0476190476190476,0.266025641025641,False,1,0,0,2,1,0,0,4,3,4,5,6,12,double,0,15,spaces,54,0,snake_case,1,0.0476190476190476,26.06,12.5,22.1,21.21,10.17,7,39,71,0.5492957746478874,0,0,0.0,10,0,False,0.4761904761904761,0,human-written,file_handling,medium,"def read_file_safely(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+            return content
+    except FileNotFoundError:
+        print(f""Error: File '{filename}' not found."")
+        return None
+    except PermissionError:
+        print(f""Error: Permission denied to read '{filename}'."")
+        return None
+    except Exception as e:
+        print(f""Unexpected error: {e}"")
+        return None
+
+# Example usage
+content = read_file_safely(""example.txt"")
+if content:
+    print(""File content:"", content[:100])  # First 100 characters
+else:
+    print(""Failed to read file."")"
+991,34,26,28.176470588235293,81,0.2352941176470588,0.3632694248234107,False,1,0,1,4,3,0,1,2,5,2,9,1,22,double,0,29,spaces,78,0,snake_case,0,0.0,54.29,7.8,17.4,16.96,4.84,7,61,105,0.580952380952381,0,0,0.0,8,0,True,0.2352941176470588,0,human-written,game,high,"import random
+
+def guess_number_game():
+    number = random.randint(1, 100)
+    attempts = 0
+    max_attempts = 7
+    
+    print(""Welcome to the Number Guessing Game!"")
+    print(f""I'm thinking of a number between 1 and 100."")
+    print(f""You have {max_attempts} attempts to guess it."")
+    
+    while attempts < max_attempts:
+        try:
+            guess = int(input(""Enter your guess: ""))
+            attempts += 1
+            
+            if guess == number:
+                print(f""Congratulations! You guessed it in {attempts} attempts!"")
+                return True
+            elif guess < number:
+                print(""Too low!"")
+            else:
+                print(""Too high!"")
+                
+            print(f""Attempts remaining: {max_attempts - attempts}"")
+            
+        except ValueError:
+            print(""Please enter a valid number!"")
+    
+    print(f""Game over! The number was {number}"")
+    return False
+
+if __name__ == ""__main__"":
+    guess_number_game()"
+384,18,15,20.38888888888889,60,0.1666666666666666,0.28125,False,2,0,0,3,2,1,0,0,2,4,2,0,4,double,0,10,spaces,47,0,snake_case,1,0.0555555555555555,8.88,23.2,29.9,11.56,21.56,3,24,60,0.4,0,0,0.0,5,0,False,0.2777777777777778,0,human-written,algorithm,medium,"def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+def fibonacci_iterative(n):
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+# Compare both methods
+n = 10
+print(f""Fibonacci({n}) recursive: {fibonacci(n)}"")
+print(f""Fibonacci({n}) iterative: {fibonacci_iterative(n)}"")"
+534,23,19,22.26086956521739,61,0.1739130434782608,0.3052434456928839,False,2,0,0,2,2,0,0,0,2,2,1,0,16,double,0,18,spaces,50,0,snake_case,0,0.0,17.64,15.7,18.0,13.81,10.59,4,35,64,0.546875,2,239,119.5,7,0,True,0.391304347826087,1,ai-generated,algorithm,medium,"def calculate_factorial(n):
+    """"""
+    Calculate the factorial of a given number.
+    
+    Args:
+        n (int): The number to calculate factorial for
+        
+    Returns:
+        int: The factorial of n
+    """"""
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * calculate_factorial(n - 1)
+
+def main():
+    """"""Main function to demonstrate factorial calculation.""""""
+    number = 5
+    result = calculate_factorial(number)
+    print(f""The factorial of {number} is {result}"")
+
+if __name__ == ""__main__"":
+    main()"
+341,15,13,21.8,61,0.13333333333333333,0.22580645161290322,False,1,0,2,3,1,0,0,2,2,2,1,4,2,single,0,7,spaces,35,0,snake_case,1,0.06666666666666667,-1.9,14.9,25.8,25.91,5.1,3,30,41,0.7317073170731707,0,0,0.0,4,0,False,0.26666666666666666,0,human-written,web_scraping,high,"# Simple web scraper
+import requests
+from bs4 import BeautifulSoup
+
+def get_title(url):
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        return soup.title.string
+    except:
+        return None
+
+title = get_title('https://example.com')
+if title:
+    print(f""Title: {title}"")"
+1750,65,53,25.93846153846154,82,0.18461538461538463,0.3222857142857143,False,2,0,0,11,4,2,0,2,3,1,3,16,24,double,0,60,spaces,158,0,snake_case,5,0.07692307692307693,10.16,20.6,27.8,15.56,18.68,11,106,203,0.5221674876847291,2,350,175.0,24,1,True,0.4153846153846154,1,ai-generated,data_processing,medium,"def calculate_statistics(data: list) -> dict:
+    """"""
+    Calculate basic statistics for a list of numbers.
+    
+    Args:
+        data (list): List of numeric values
+        
+    Returns:
+        dict: Dictionary containing statistical measures
+        
+    Raises:
+        ValueError: If data is empty or contains non-numeric values
+    """"""
+    if not data:
+        raise ValueError(""Data list cannot be empty"")
+    
+    # Validate that all elements are numeric
+    for item in data:
+        if not isinstance(item, (int, float)):
+            raise ValueError(f""All elements must be numeric, found: {type(item)}"")
+    
+    # Calculate statistics
+    n = len(data)
+    mean = sum(data) / n
+    
+    # Calculate variance and standard deviation
+    variance = sum((x - mean) ** 2 for x in data) / n
+    std_dev = variance ** 0.5
+    
+    # Find min and max
+    minimum = min(data)
+    maximum = max(data)
+    
+    # Calculate median
+    sorted_data = sorted(data)
+    if n % 2 == 0:
+        median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+    else:
+        median = sorted_data[n // 2]
+    
+    return {
+        'count': n,
+        'mean': mean,
+        'median': median,
+        'variance': variance,
+        'std_dev': std_dev,
+        'min': minimum,
+        'max': maximum,
+        'range': maximum - minimum
+    }
+
+def main():
+    """"""Main function to demonstrate statistics calculation.""""""
+    sample_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    
+    try:
+        stats = calculate_statistics(sample_data)
+        print(""Statistical Analysis:"")
+        for key, value in stats.items():
+            print(f""{key.capitalize()}: {value:.2f}"")
+    except ValueError as e:
+        print(f""Error: {e}"")
+
+if __name__ == ""__main__"":
+    main()"
+220,11,9,19.09090909090909,38,0.18181818181818182,0.2590909090909091,False,1,0,1,1,0,0,0,2,3,2,1,6,0,single,0,5,spaces,26,0,snake_case,0,0.0,3.12,15.1,25.7,23.81,5.82,3,19,27,0.7037037037037037,0,0,0.0,4,0,False,0.36363636363636365,0,human-written,file_handling,low,"import json
+
+def load_config(filename):
+    try:
+        with open(filename, 'r') as f:
+            return json.load(f)
+    except:
+        return {}
+
+config = load_config('config.json')
+print(config.get('debug', False))"
+366,13,12,27.23076923076923,51,0.0769230769230769,0.2540983606557377,False,1,0,0,4,1,2,0,0,4,1,2,0,4,double,0,6,spaces,45,0,snake_case,1,0.0769230769230769,43.22,12.1,21.3,13.63,10.88,3,31,60,0.5166666666666667,0,0,0.0,4,0,False,0.3076923076923077,0,human-written,algorithm,medium,"def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+# Test the function
+numbers = [64, 34, 25, 12, 22, 11, 90]
+sorted_numbers = bubble_sort(numbers.copy())
+print(f""Original: {numbers}"")
+print(f""Sorted: {sorted_numbers}"")"
+383,15,13,24.6,71,0.1333333333333333,0.1488250652741514,False,0,0,0,3,0,0,0,0,0,0,2,0,12,double,0,4,spaces,29,0,snake_case,3,0.2,-12.59,17.0,32.0,30.87,10.86,1,29,43,0.6744186046511628,0,0,0.0,0,0,False,0.0,0,human-written,data_structures,medium,"# Dictionary operations
+student_grades = {
+    ""Alice"": 85,
+    ""Bob"": 92,
+    ""Charlie"": 78,
+    ""Diana"": 96
+}
+
+# Find average grade
+average = sum(student_grades.values()) / len(student_grades)
+print(f""Average grade: {average:.2f}"")
+
+# Find top student
+top_student = max(student_grades, key=student_grades.get)
+print(f""Top student: {top_student} with {student_grades[top_student]}"")"
+2273,76,62,28.92105263157895,79,0.18421052631578946,0.37571491421029474,False,5,1,3,5,1,0,0,4,5,1,0,9,42,double,0,75,spaces,187,0,snake_case,0,0.0,20.55,12.5,18.7,18.99,6.84,9,95,230,0.41304347826086957,6,1110,185.0,25,3,False,0.4473684210526316,1,ai-generated,class,high,"class ConfigManager:
+    """"""
+    A class to manage application configuration.
+    
+    This class provides methods to load, save, and access configuration
+    settings from various sources including files and environment variables.
+    """"""
+    
+    def __init__(self, config_file: str = ""config.json""):
+        """"""
+        Initialize the configuration manager.
+        
+        Args:
+            config_file (str): Path to the configuration file
+        """"""
+        self.config_file = config_file
+        self.config = {}
+        self.load_config()
+    
+    def load_config(self) -> None:
+        """"""
+        Load configuration from file.
+        
+        Raises:
+            FileNotFoundError: If configuration file doesn't exist
+            json.JSONDecodeError: If configuration file is invalid JSON
+        """"""
+        import json
+        import os
+        
+        if os.path.exists(self.config_file):
+            try:
+                with open(self.config_file, 'r', encoding='utf-8') as file:
+                    self.config = json.load(file)
+            except json.JSONDecodeError as e:
+                raise json.JSONDecodeError(f""Invalid JSON in config file: {e}"")
+        else:
+            self.config = {}
+    
+    def get(self, key: str, default=None):
+        """"""
+        Get configuration value by key.
+        
+        Args:
+            key (str): Configuration key
+            default: Default value if key not found
+            
+        Returns:
+            Configuration value or default
+        """"""
+        return self.config.get(key, default)
+    
+    def set(self, key: str, value) -> None:
+        """"""
+        Set configuration value.
+        
+        Args:
+            key (str): Configuration key
+            value: Configuration value
+        """"""
+        self.config[key] = value
+    
+    def save_config(self) -> None:
+        """"""
+        Save configuration to file.
+        
+        Raises:
+            IOError: If unable to write to configuration file
+        """"""
+        import json
+        
+        try:
+            with open(self.config_file, 'w', encoding='utf-8') as file:
+                json.dump(self.config, file, indent=4, ensure_ascii=False)
+        except IOError as e:
+            raise IOError(f""Unable to save config file: {e}"")"
+89,5,4,17.0,28,0.2,0.1573033707865168,False,1,0,0,0,0,0,0,0,1,1,1,0,4,double,0,1,spaces,10,0,snake_case,1,0.2,45.42,9.2,22.3,18.99,3.6,0,11,13,0.8461538461538461,0,0,0.0,1,0,False,0.2,0,human-written,basic,low,"# Simple hello world
+def greet(name):
+    return f""Hello, {name}!""
+
+print(greet(""World""))"
+143,4,4,35.0,52,0.0,0.2027972027972027,False,0,0,0,2,0,0,0,0,0,0,1,0,0,double,0,0,spaces,13,0,snake_case,1,0.25,71.48,9.5,12.5,4.13,13.2,2,21,27,0.7777777777777778,0,0,0.0,0,0,False,0.0,0,human-written,basic,low,"# List comprehension example
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_squares = [x**2 for x in numbers if x % 2 == 0]
+print(even_squares)"
+835,32,26,25.125,65,0.1875,0.2790419161676646,False,2,0,1,4,1,1,0,0,2,1,1,2,30,double,0,27,spaces,73,3,snake_case,0,0.0,26.47,12.3,27.0,23.99,7.43,5,63,94,0.6702127659574468,2,250,125.0,7,1,True,0.3125,1,ai-generated,validation,medium,"def validate_email(email: str) -> bool:
+    """"""
+    Validate an email address using basic pattern matching.
+    
+    Args:
+        email (str): Email address to validate
+        
+    Returns:
+        bool: True if email is valid, False otherwise
+    """"""
+    import re
+    
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return bool(re.match(pattern, email))
+
+def test_email_validation():
+    """"""Test the email validation function.""""""
+    test_emails = [
+        ""user@example.com"",
+        ""invalid.email"",
+        ""test@domain.co.uk"",
+        ""not_an_email"",
+        ""another@test.org""
+    ]
+    
+    for email in test_emails:
+        is_valid = validate_email(email)
+        status = ""Valid"" if is_valid else ""Invalid""
+        print(f""{email}: {status}"")
+
+if __name__ == ""__main__"":
+    test_email_validation()"
+965,40,31,23.15,63,0.225,0.3533678756476684,False,2,0,0,8,4,0,1,0,4,2,2,0,18,double,0,35,spaces,84,0,snake_case,0,0.0,53.24,12.4,19.7,11.84,12.42,10,59,114,0.5175438596491229,2,266,133.0,12,0,True,0.35,1,ai-generated,algorithm,medium,"def binary_search(arr, target):
+    """"""
+    Perform binary search on a sorted array.
+    
+    Args:
+        arr (list): Sorted list to search in
+        target: Element to search for
+        
+    Returns:
+        int: Index of target if found, -1 otherwise
+    """"""
+    left = 0
+    right = len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1
+
+def test_binary_search():
+    """"""Test function for binary search.""""""
+    test_array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+    test_target = 7
+    
+    result = binary_search(test_array, test_target)
+    
+    if result != -1:
+        print(f""Element {test_target} found at index {result}"")
+    else:
+        print(f""Element {test_target} not found in the array"")
+
+if __name__ == ""__main__"":
+    test_binary_search()"
+1189,55,43,20.636363636363637,50,0.21818181818181817,0.343986543313709,False,3,0,0,7,3,0,1,0,3,3,2,0,24,double,0,48,spaces,113,0,snake_case,0,0.0,63.8,8.3,19.6,14.96,8.16,5,57,141,0.40425531914893614,3,390,130.0,18,2,True,0.41818181818181815,1,ai-generated,algorithm,high,"def merge_sort(arr: list) -> list:
+    """"""
+    Implement merge sort algorithm.
+    
+    Args:
+        arr (list): List of elements to sort
+        
+    Returns:
+        list: Sorted list
+    """"""
+    if len(arr) <= 1:
+        return arr
+    
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    return merge(left, right)
+
+def merge(left: list, right: list) -> list:
+    """"""
+    Merge two sorted lists.
+    
+    Args:
+        left (list): First sorted list
+        right (list): Second sorted list
+        
+    Returns:
+        list: Merged sorted list
+    """"""
+    result = []
+    i = j = 0
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+def main():
+    """"""Main function to demonstrate merge sort.""""""
+    test_array = [64, 34, 25, 12, 22, 11, 90]
+    sorted_array = merge_sort(test_array)
+    print(f""Original: {test_array}"")
+    print(f""Sorted: {sorted_array}"")
+
+if __name__ == ""__main__"":
+    main()"
+220,10,9,21.1,49,0.1,0.34545454545454546,False,1,0,0,1,2,1,0,0,3,3,1,0,0,double,0,6,spaces,28,0,snake_case,0,0.0,89.58,4.6,8.2,3.94,6.2,5,19,39,0.48717948717948717,0,0,0.0,4,0,False,0.4,0,human-written,algorithm,medium,"def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+primes = [i for i in range(2, 50) if is_prime(i)]
+print(primes)"
+497,21,17,22.714285714285715,52,0.1904761904761904,0.2957746478873239,False,4,1,0,4,0,0,0,0,2,3,3,0,6,double,0,15,spaces,55,0,snake_case,0,0.0,14.73,12.7,21.7,17.62,4.31,0,22,63,0.3492063492063492,0,0,0.0,5,0,False,0.238095238095238,0,human-written,class,medium,"class Calculator:
+    def __init__(self):
+        self.history = []
+    
+    def add(self, a, b):
+        result = a + b
+        self.history.append(f""{a} + {b} = {result}"")
+        return result
+    
+    def subtract(self, a, b):
+        result = a - b
+        self.history.append(f""{a} - {b} = {result}"")
+        return result
+    
+    def get_history(self):
+        return self.history
+
+calc = Calculator()
+print(calc.add(5, 3))
+print(calc.subtract(10, 4))
+print(""History:"", calc.get_history())"

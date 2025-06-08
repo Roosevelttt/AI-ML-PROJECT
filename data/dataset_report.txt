@@ -1,0 +1,109 @@
+AI/ML Code Classifier - Dataset Report
+==================================================
+
+📊 BASIC STATISTICS
+------------------------------
+Total samples: 13
+Human-written samples: 8
+AI-generated samples: 5
+Total features: 46
+
+🏷️ LABEL DISTRIBUTION
+------------------------------
+human-written: 8 (61.5%)
+ai-generated: 5 (38.5%)
+
+📂 CATEGORY DISTRIBUTION
+------------------------------
+algorithm: 4 (30.8%)
+class: 2 (15.4%)
+basic: 2 (15.4%)
+data_processing: 1 (7.7%)
+game: 1 (7.7%)
+validation: 1 (7.7%)
+file_handling: 1 (7.7%)
+data_structures: 1 (7.7%)
+
+🔧 COMPLEXITY DISTRIBUTION
+------------------------------
+medium: 9 (69.2%)
+high: 2 (15.4%)
+low: 2 (15.4%)
+
+📈 FEATURE STATISTICS
+------------------------------
+       total_characters  total_lines  non_empty_lines  avg_line_length  max_line_length  empty_line_ratio  whitespace_ratio  num_functions  num_classes  num_imports  num_variables  num_if_statements  num_for_loops  num_while_loops  num_try_except  max_nesting_depth  num_return_statements  num_print_statements  single_quote_count  double_quote_count  tab_indented_lines  space_indented_lines  snake_case_count  camel_case_count  comment_lines  comment_ratio  flesch_reading_ease  flesch_kincaid_grade  automated_readability_index  coleman_liau_index  gunning_fog  cyclomatic_complexity  unique_tokens  total_tokens  token_diversity  num_docstrings  total_docstring_length  avg_docstring_length  type_hints_count  return_annotations_count  documentation_ratio
+count         13.000000    13.000000        13.000000        13.000000        13.000000         13.000000         13.000000      13.000000    13.000000    13.000000      13.000000          13.000000      13.000000        13.000000       13.000000          13.000000              13.000000             13.000000           13.000000           13.000000                13.0              13.00000         13.000000         13.000000      13.000000      13.000000            13.000000             13.000000                    13.000000           13.000000    13.000000              13.000000      13.000000     13.000000        13.000000       13.000000               13.000000             13.000000         13.000000                 13.000000            13.000000
+mean         640.153846    24.538462        20.153846        25.019419        61.538462          0.156600          0.277617       1.692308     0.153846     0.153846       3.461538           1.461538       0.384615         0.153846        0.461538           2.461538               2.000000              2.307692            0.692308           13.692308                 0.0              19.00000         55.923077          0.230769       0.615385       0.063854            34.677692             12.507692                    21.838462           17.182308     9.441538               3.923077      37.769231     73.461538         0.564415        1.000000              153.230769             52.753846          7.153846                  0.307692             0.282584
+std          433.998434    15.457551        12.171320         4.458575        15.982362          0.072442          0.073504       1.250641     0.375534     0.375534       1.983910           1.330124       0.650444         0.375534        1.198289           1.560736               1.581139              2.358835            1.702186            9.994870                 0.0              16.72822         31.228890          0.832050       0.869718       0.091636            23.336154              4.188369                     5.315314            6.615136     4.826810               2.928638      16.862947     39.533984         0.157273        1.527525              288.025796             73.305384          6.542759                  0.854850             0.157229
+min           89.000000     4.000000         4.000000        17.000000        28.000000          0.000000          0.148825       0.000000     0.000000     0.000000       0.000000           0.000000       0.000000         0.000000        0.000000           0.000000               0.000000              0.000000            0.000000            0.000000                 0.0               0.00000         10.000000          0.000000       0.000000       0.000000           -12.590000              7.800000                    12.500000            4.130000     3.600000               0.000000      11.000000     13.000000         0.303030        0.000000                0.000000              0.000000          0.000000                  0.000000             0.000000
+25%          383.000000    15.000000        13.000000        22.714286        52.000000          0.133333          0.254098       1.000000     0.000000     0.000000       2.000000           0.000000       0.000000         0.000000        0.000000           2.000000               1.000000              1.000000            0.000000            4.000000                 0.0               6.00000         45.000000          0.000000       0.000000       0.000000            17.640000              9.400000                    18.000000           13.630000     6.220000               2.000000      24.000000     60.000000         0.516667        0.000000                0.000000              0.000000          4.000000                  0.000000             0.235294
+50%          534.000000    21.000000        19.000000        24.600000        61.000000          0.180328          0.281250       2.000000     0.000000     0.000000       3.000000           1.000000       0.000000         0.000000        0.000000           2.000000               2.000000              2.000000            0.000000           12.000000                 0.0              15.00000         54.000000          0.000000       0.000000       0.000000            43.220000             12.300000                    21.700000           17.440000    10.170000               4.000000      35.000000     64.000000         0.549296        0.000000                0.000000              0.000000          7.000000                  0.000000             0.307692
+75%          835.000000    32.000000        26.000000        27.344262        65.000000          0.200000          0.315453       2.000000     0.000000     0.000000       4.000000           2.000000       1.000000         0.000000        0.000000           4.000000               3.000000              2.000000            0.000000           20.000000                 0.0              27.00000         73.000000          0.000000       1.000000       0.076923            51.850000             12.700000                    22.300000           21.210000    10.880000               5.000000      50.000000     94.000000         0.670213        2.000000              239.000000            119.500000          9.000000                  0.000000             0.350000
+max         1728.000000    61.000000        50.000000        35.000000        95.000000          0.235294          0.386574       4.000000     1.000000     1.000000       8.000000           4.000000       2.000000         1.000000        4.000000           5.000000               5.000000              9.000000            6.000000           30.000000                 0.0              60.00000        128.000000          3.000000       3.000000       0.250000            71.480000             23.200000                    32.000000           30.870000    21.560000              10.000000      63.000000    165.000000         0.846154        5.000000             1034.000000            206.800000         25.000000                  3.000000             0.540984
+
+🔗 TOP FEATURES BY CORRELATION WITH LABELS
+------------------------------
+avg_docstring_length: 0.947
+num_docstrings: 0.862
+double_quote_count: 0.750
+space_indented_lines: 0.708
+total_docstring_length: 0.700
+total_lines: 0.695
+non_empty_lines: 0.679
+unique_tokens: 0.626
+total_characters: 0.623
+snake_case_count: 0.613
+
+❓ MISSING VALUES
+------------------------------
+No missing values found.
+
+📋 COMPLETE FEATURE LIST
+------------------------------
+ 1. total_characters
+ 2. total_lines
+ 3. non_empty_lines
+ 4. avg_line_length
+ 5. max_line_length
+ 6. empty_line_ratio
+ 7. whitespace_ratio
+ 8. syntax_error
+ 9. num_functions
+10. num_classes
+11. num_imports
+12. num_variables
+13. num_if_statements
+14. num_for_loops
+15. num_while_loops
+16. num_try_except
+17. max_nesting_depth
+18. num_return_statements
+19. num_print_statements
+20. single_quote_count
+21. double_quote_count
+22. quote_preference
+23. tab_indented_lines
+24. space_indented_lines
+25. indentation_preference
+26. snake_case_count
+27. camel_case_count
+28. naming_preference
+29. comment_lines
+30. comment_ratio
+31. flesch_reading_ease
+32. flesch_kincaid_grade
+33. automated_readability_index
+34. coleman_liau_index
+35. gunning_fog
+36. cyclomatic_complexity
+37. unique_tokens
+38. total_tokens
+39. token_diversity
+40. num_docstrings
+41. total_docstring_length
+42. avg_docstring_length
+43. type_hints_count
+44. return_annotations_count
+45. has_main_guard
+46. documentation_ratio
